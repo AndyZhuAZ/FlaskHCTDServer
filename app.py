@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 import json
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def hello_world():
 
 @app.route('/editor')
 def editor():
-    return app.send_static_file('html/editor.html')
+    return render_template('editor.html')
 
 if __name__ == '__main__':
     app.run()
