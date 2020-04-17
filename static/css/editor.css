@@ -1,0 +1,8 @@
+#type,#editor-control button{
+    font-size: medium;
+}
+#type-select,#editor-control{
+    text-align: center;
+    margin: 20px auto;
+    width: 300px;
+}

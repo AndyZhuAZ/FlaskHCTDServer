@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     {% block head %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{url_for('static',filename='js/editormd/css/editormd.css')}}" />
-    <script type="text/javascript" src="{{url_for('static',filename='js/editormd/examples/js/jquery.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/editormd/editormd.min.js')}}"></script>
-    <title>editor</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static',filename='js/editormd/css/editormd.css')}}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/editor.css') }}"/>
+        <script type="text/javascript" src="{{url_for('static',filename='js/editormd/examples/js/jquery.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/editormd/editormd.min.js')}}"></script>
+        <title>editor</title>
     {% endblock %}
 </head>
 <body>
@@ -14,6 +15,13 @@
     <p style="text-align: center">editor</p>
 </div>
 <div id="layout" class="editor">
+    <div id="type-select">
+        <select id="type">
+            <option value="aid">急救指南</option>
+            <option value="care">看护建议</option>
+            <option value="mdc">药品知识</option>
+        </select>
+    </div>
     <div id="test-editormd">
         <textarea></textarea>
     </div>
@@ -52,7 +60,7 @@
     $("#submit").bind('click',function () {
         var data = {"text":testEditor.getMarkdown()}
         $.ajax({
-            url:'localhost:8080/resources',
+            url:'/editor/upload',
             type:'POST',
             data:JSON.stringify(data),
             success:function (data) {

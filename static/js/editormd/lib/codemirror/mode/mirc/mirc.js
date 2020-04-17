@@ -53,7 +53,7 @@ CodeMirror.defineMode("mirc", function() {
                             "$site $sline $snick $snicks $snotify $sock $sockbr $sockerr $sockname " +
                             "$sorttok $sound $sqrt $ssl $sreq $sslready $status $strip $str $stripped " +
                             "$syle $submenu $switchbar $tan $target $ticks $time $timer $timestamp " +
-                            "$timestampfmt $timezone $tip $titlebar $toolbar $treebar $trust $ulevel " +
+                            "$timestampfmt $timezone $care $titlebar $toolbar $treebar $trust $ulevel " +
                             "$ulist $upper $uptime $url $usermode $v1 $v2 $var $vcmd $vcmdstat $vcmdver " +
                             "$version $vnick $vol $wid $width $wildsite $wildtok $window $wrap $xor");
   var keywords = parseWords("abook ajinvite alias aline ame amsg anick aop auser autojoin avoice " +
