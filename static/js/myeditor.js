@@ -1,0 +1,43 @@
+var testEditor;
+testEditor = editormd("test-editormd", {
+    placeholder: '本编辑器支持Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+    width: "100%",
+    height: 640,
+    syncScrolling: "single",
+    path: "{{ url_for('static',filename='js/editormd/lib/') }}",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+    theme: "default",//工具栏主题
+    previewTheme: "default",//预览主题
+    editorTheme: "default",//编辑主题
+    saveHTMLToTextarea: true,
+    emoji: false,
+    taskList: true,
+    tocm: true,         // Using [TOCM]
+    tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+    flowChart: true,             // 开启流程图支持，默认关闭
+    sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+    toolbarIcons: function () {  //自定义工具栏，后面有详细介绍
+        return editormd.toolbarModes['full']; // full, simple, mini
+    },
+});
+$("#show").bind('click', function () {
+    console.log(testEditor.getMarkdown())
+    console.log($("#type").find("option:selected").val())
+});
+$("#submit").bind('click', function () {
+    const data = {"tip_type": $("#type").find("option:selected").val(), "text": testEditor.getMarkdown()};
+    $.ajax({
+        url: '/editor/upload',
+        type: 'POST',
+        data: JSON.stringify(data),
+        success: function (data) {
+            alert(data)
+        },
+        error: function (data) {
+            alert(data)
+        }
+    })
+})
+// document.getElementById("show").onclick = function show() {
+//     console.log(testEditor.getMarkdown())
+// }
+

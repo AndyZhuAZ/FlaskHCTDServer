@@ -5,9 +5,7 @@
       <paths name="root@106.15.250.171:22 key">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/pycharm_project_258" local="$PROJECT_DIR$" />
-            <mapping deploy="" local="" />
-            <mapping />
+            <mapping deploy="/root/FlaskHCTDServer" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

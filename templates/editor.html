@@ -7,12 +7,12 @@
         <link rel="stylesheet" href="{{ url_for('static',filename='css/editor.css') }}"/>
         <script type="text/javascript" src="{{url_for('static',filename='js/editormd/examples/js/jquery.min.js')}}"></script>
         <script src="{{url_for('static',filename='js/editormd/editormd.min.js')}}"></script>
-        <title>editor</title>
+        <title>编辑器 - 看护助手后台管理系统</title>
     {% endblock %}
 </head>
 <body>
 <div style="padding: 10px">
-    <p style="text-align: center">editor</p>
+    <p style="text-align: center">编辑器 - 看护助手后台管理系统</p>
 </div>
 <div id="layout" class="editor">
     <div id="type-select">
@@ -26,9 +26,9 @@
         <textarea></textarea>
     </div>
     <div id="editor-control">
-        <button id="show">show</button>
-        <button id="get-md-btn">Get Markdown</button>
-        <button id="submit">submit</button>
+        <button id="show" style="display: none">show</button>
+        <button id="submit">提交</button>
+        <button id="exit">退出</button>
     </div>
 </div>
 </body>
@@ -54,16 +54,23 @@
             return editormd.toolbarModes['full']; // full, simple, mini
         },
     });
+    $("#exit").bind('click',function () {
+        location.href = '/index'
+    })
     $("#show").bind('click',function () {
         console.log(testEditor.getMarkdown())
+        console.log($("#type").find("option:selected").val())
     });
     $("#submit").bind('click',function () {
-        var data = {"text":testEditor.getMarkdown()}
+        const data = {"tip_type":$("#type").find("option:selected").val(),"text": testEditor.getMarkdown()};
         $.ajax({
             url:'/editor/upload',
             type:'POST',
             data:JSON.stringify(data),
             success:function (data) {
+                alert(data)
+            },
+            error:function (data) {
                 alert(data)
             }
         })
