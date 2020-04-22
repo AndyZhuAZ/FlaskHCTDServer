@@ -58,6 +58,11 @@ def login():
     pass
 
 
+@app.route('/register')
+def register():
+    pass
+
+
 # @app.route('/test')
 # def test():
 #     with open('static/markdown/心搏骤停.md') as f:
