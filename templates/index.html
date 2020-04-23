@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <h1>欢迎使用看护助手后台管理系统,
+        {% if not current_user.is_anonymous %}
+            <span>你好，{{current_user.username}}。</span>
+            <br>
+            <span>现在你可以进入编辑器了。</span>
+        {% else %}
+            <span>请先登陆。</span>
+        {% endif %}
+    </h1>
 {% endblock %}
